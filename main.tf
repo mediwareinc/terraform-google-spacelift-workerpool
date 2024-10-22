@@ -84,6 +84,7 @@ resource "google_compute_instance_template" "spacelift-worker" {
   machine_type = var.machine_type
   region       = var.region
   project      = var.project
+  tags         = var.network_tags
 
   disk {
     source_image = var.image

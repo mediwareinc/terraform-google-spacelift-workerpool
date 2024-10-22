@@ -73,6 +73,12 @@ variable "subnetwork_project" {
   default     = null
 }
 
+variable "network_tags" {
+  type        = list(string)
+  description = "Network tags to assign to workerpool VMs"
+  default     = []
+}
+
 variable "region" {
   type        = string
   description = "Region to create workerpool in"
