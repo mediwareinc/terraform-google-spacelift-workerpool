@@ -99,3 +99,9 @@ variable "service_account_scopes" {
   default     = []
   description = "A list of custom OAuth scopes to add to the service account defined in the instance template"
 }
+
+variable "automatic_restart" {
+  type        = string
+  description = "Allow instance to be restarted by Google"
+  default     = false
+}

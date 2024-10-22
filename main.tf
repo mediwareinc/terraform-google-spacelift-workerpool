@@ -108,7 +108,7 @@ resource "google_compute_instance_template" "spacelift-worker" {
   ])
 
   scheduling {
-    automatic_restart   = false
+    automatic_restart   = var.automatic_restart
     on_host_maintenance = "MIGRATE"
   }
 }
