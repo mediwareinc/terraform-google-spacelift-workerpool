@@ -90,8 +90,9 @@ resource "google_compute_instance_template" "spacelift-worker" {
   }
 
   network_interface {
-    network    = var.network
-    subnetwork = var.subnetwork
+    network            = var.network
+    subnetwork         = var.subnetwork
+    subnetwork_project = var.subnetwork_project
   }
 
   service_account {
@@ -112,7 +113,7 @@ resource "google_compute_instance_template" "spacelift-worker" {
 }
 
 resource "google_compute_instance_group_manager" "spacelift-worker" {
-  name    = var.instance_group_manager_name
+  name = var.instance_group_manager_name
 
   base_instance_name = var.instance_group_base_instance_name
   zone               = var.zone
