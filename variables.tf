@@ -105,3 +105,24 @@ variable "automatic_restart" {
   description = "Allow instance to be restarted by Google"
   default     = false
 }
+
+variable "enable_shielded_vm" {
+  type        = string
+  description = "Whether to enable the Shielded VM configuration on the instance. Note that the instance image must support Shielded VMs. See https://cloud.google.com/compute/docs/images"
+  default     = false
+}
+
+variable "shielded_instance_config" {
+  description = "Not used unless enable_shielded_vm is true. Shielded VM configuration for the instance."
+  type = object({
+    enable_secure_boot          = bool
+    enable_vtpm                 = bool
+    enable_integrity_monitoring = bool
+  })
+
+  default = {
+    enable_secure_boot          = true
+    enable_vtpm                 = true
+    enable_integrity_monitoring = true
+  }
+}

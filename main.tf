@@ -101,6 +101,16 @@ resource "google_compute_instance_template" "spacelift-worker" {
     scopes = var.service_account_scopes
   }
 
+  dynamic "shielded_instance_config" {
+    for_each = var.enable_shielded_vm ? ["shield"] : []
+
+    content {
+      enable_secure_boot          = var.shielded_instance_config.enable_secure_boot
+      enable_vtpm                 = var.shielded_instance_config.enable_vtpm
+      enable_integrity_monitoring = var.shielded_instance_config.enable_integrity_monitoring
+    }
+  }
+
   metadata_startup_script = join("\n", [
     local.user_data_head,
     var.configuration,
