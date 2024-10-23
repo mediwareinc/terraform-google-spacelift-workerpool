@@ -126,3 +126,9 @@ variable "shielded_instance_config" {
     enable_integrity_monitoring = true
   }
 }
+
+variable "labels" {
+  description = "Resource labels"
+  type        = map(string)
+  default     = {}
+}

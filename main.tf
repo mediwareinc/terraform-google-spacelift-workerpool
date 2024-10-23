@@ -121,6 +121,8 @@ resource "google_compute_instance_template" "spacelift-worker" {
     automatic_restart   = var.automatic_restart
     on_host_maintenance = "MIGRATE"
   }
+
+  labels = var.labels
 }
 
 resource "google_compute_instance_group_manager" "spacelift-worker" {
