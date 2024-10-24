@@ -126,6 +126,10 @@ resource "google_compute_instance_template" "spacelift-worker" {
 }
 
 resource "google_compute_instance_group_manager" "spacelift-worker" {
+  lifecycle {
+    replace_triggered_by = [google_compute_instance_template.spacelift-worker]
+  }
+
   name = var.instance_group_manager_name
 
   base_instance_name = var.instance_group_base_instance_name
