@@ -88,6 +88,7 @@ resource "google_compute_instance_template" "spacelift-worker" {
 
   disk {
     source_image = var.image
+    disk_size_gb = var.boot_disk_size
   }
 
   network_interface {
@@ -140,7 +141,7 @@ resource "google_compute_instance_group_manager" "spacelift-worker" {
     instance_template = google_compute_instance_template.spacelift-worker.id
   }
 
-  target_size = var.size
+  target_size = var.worker_count
 
   update_policy {
     type                  = "PROACTIVE"

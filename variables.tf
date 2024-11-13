@@ -38,6 +38,12 @@ variable "image" {
   default     = "projects/spacelift-workers/global/images/spacelift-worker-us-1646835906-1jyej6pe"
 }
 
+variable "boot_disk_size" {
+  type        = number
+  description = "Size of boot disk in GB"
+  default     = 20
+}
+
 variable "instance_group_manager_name" {
   type        = string
   description = "Name for instance group manager"
@@ -84,7 +90,7 @@ variable "region" {
   description = "Region to create workerpool in"
 }
 
-variable "size" {
+variable "worker_count" {
   type        = string
   description = "Number of workers to create"
 }
